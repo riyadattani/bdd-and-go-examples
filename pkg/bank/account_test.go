@@ -18,4 +18,17 @@ func TestBankAccount_Deposit(t *testing.T) {
 			t.Fatalf("expected %v, got %v", expectedAccountBalance, accountBalance)
 		}
 	})
+
+	t.Run("When I withdraw 10 pounds from my account, I expect my balance to decrease by 10 pounds", func(t *testing.T) {
+		expectedAccountBalance := 5
+
+		account := bank.Account{Balance: 15}
+
+		account.Withdraw(10)
+		accountBalance := account.GetBalance()
+
+		if accountBalance != expectedAccountBalance {
+			t.Fatalf("expected %v, got %v", expectedAccountBalance, accountBalance)
+		}
+	})
 }
